@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    var MyTitle = React.createClass({
+        render: function () {
+            return (
+                <div className="hehe">
+                    <h2>Questions</h2><hr />
+                </div>
+            );
+        }
+    });
+    ReactDOM.render(
+        <MyTitle />,
+        document.getElementById("content")
+    )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    let Score = React.createClass({
+        getInitialState: function () {
+            return { 
+                counts: 0,
+                title: "counts:" 
+            };
+        },
+        handlerClick : function (event) {
+            this.setState((state) => {
+                return {
+                    counts: ++state.counts
+                }
+            })
+        },
+        render: function () {
+            return (
+                <div className="score">
+                <p>
+                    {this.state.title}<span>{this.state.counts}</span>
+                </p>
+                <button onClick={this.handlerClick}>
+                    click me
+                </button>
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+        <Score/>,
+        document.getElementById("content")
+    )
+    </script>
+</body>
+
+</html>
