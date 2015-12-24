@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <div id="content1"></div>
+    <script type="text/babel">
+    let Test = React.createClass({
+        getInitialState: () => {
+            alert(1);
+            return {
+                count: 0
+            }
+        }, render : function () {
+            return (
+                <h1>
+                    {this.state.count}
+                </h1>
+            )
+        }
+    })
+    ReactDOM.render(
+        <Test/>,
+        document.getElementById("content")
+    )
+    ReactDOM.render(
+        <Test/>,
+        document.getElementById("content1")
+    )
+    </script>
+</body>
+
+</html>
