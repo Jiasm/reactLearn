@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    /*
+        一个组件的属性不能重复，否则会报错的。
+    */
+    let buildCount = function (count = 1) {
+        return {
+            getCount: function () {
+                return count;
+            },
+            setCount: function (val) {
+                count = val
+            }
+        }
+    }
+    let Score = React.createClass({
+        mixins: [buildCount()],     // 这个应该是个关键字了，这个对象里边所有的属性都会作为组件的属性
+        getInitialState: function () {
+            return { 
+                counts: 0,
+                title: "counts:" 
+            };
+        },
+        handlerClick : function (event) {
+            this.setState((state) => {
+                return {
+                    counts: ++state.counts
+                }
+            })
+        },
+        render: function () {
+            return (
+                <div className="score">
+                <p>
+                    {this.state.title}<span>{this.state.counts}</span>
+                </p>
+                <button onClick={this.handlerClick}>
+                    click me
+                </button>
+                </div>
+            )
+        }
+    });
+    ReactDOM.render(
+        <Score/>,
+        document.getElementById("content")
+    )
+    </script>
+</body>
+
+</html>
