@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    let MyForm = React.createClass({
+        submitHandler: function (event) {
+            event.preventDefault();
+            alert(this.refs.userName.value);
+        },
+        render: function () {
+            return (
+                <form onSubmit={this.submitHandler} >
+                    <input type="text" defaultValue="default" ref="userName" />
+                    <input type="submit" defaultValue="submit"/>
+                </form>
+            )
+        }
+    });
+    ReactDOM.render(
+        <MyForm />,
+        document.getElementById("content")
+    );
+    </script>
+</body>
+
+</html>

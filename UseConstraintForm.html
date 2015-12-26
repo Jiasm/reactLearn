@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    let MyForm = React.createClass({
+        getInitialState: function () {
+            return {
+                userName: "niko"
+            }
+        },
+        changeHandler: function (event) {
+            console.log("changeHandler");
+            this.setState({
+                userName: event.target.value
+            });
+        },
+        componentWillUpdate: function (_, nextState) {
+            console.log("componentWillUpdate");
+        },
+        componentDidUpdate: function () {
+            console.log("componentDidUpdate");
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            alert(this.state.userName);
+        },
+        render: function () {
+            console.log("render");
+            return (
+                <form onSubmit={this.submitHandler} >
+                    <input type="text" onChange={this.changeHandler} value={this.state.userName} />
+                    <input type="submit" defaultValue="submit"/>
+                </form>
+            )
+        }
+    });
+    ReactDOM.render(
+        <MyForm />,
+        document.getElementById("content")
+    );
+    </script>
+</body>
+
+</html>
