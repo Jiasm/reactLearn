@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    let MyForm = React.createClass({
+        getInitialState: function () {
+            return {
+                firstName: 'niko',
+                lastName: 'bellic'
+            }
+        },
+        changeHandler: function (event) {
+            let eTarget = event.target;
+            this.setState({
+                [eTarget.name]: eTarget.value
+            })
+        },
+        submitHandler: function (event) {
+            event.preventDefault();
+            console.log(`${this.state.firstName} ${this.state.lastName}`);
+        },
+        render: function () {
+            return (
+                <form onSubmit={this.submitHandler}>
+                    <p>
+                        <label htmlFor="firstName">first name</label>
+                        <input type="text" name="firstName" value={this.state.firstName} onChange={this.changeHandler}/>
+                    </p>
+                    <p>
+                        <label htmlFor="lastName">last name</label>
+                        <input type="text" name="lastName" value={this.state.lastName} onChange={this.changeHandler}/>
+                    </p>
+                    <p>
+                        <button>提交</button>
+                    </p>
+                </form>
+            )
+        }
+    });
+    ReactDOM.render(
+        <MyForm />,
+        document.getElementById("content")
+    );
+    </script>
+</body>
+
+</html>
