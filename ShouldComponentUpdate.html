@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+<!--    <script src="js/react.js"></script> -->
+    <script src="js/react-width-addons.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    	var MyComponent = React.createClass({
+    		getInitialState: function () {
+    			return {
+    				id: this.props.id
+    			};
+    		},
+    		clickHandler: function () {
+    			this.setState({
+    				id: "change"
+    			})
+    		}, 
+    		componentWillUpdate: function () {
+    			console.log("willUpdate");
+    		},
+    		componentDidUpdate: function () {
+    			console.log("didUpdate");
+    		},
+    		shouldComponentUpdate: function (nextProps, nextState) {
+    			return true;
+    		},
+    		render: function () {
+    			console.log("render");
+    			return (
+    				<div>
+	    				<label>
+	    					this.props.title
+	    				</label>
+	    				<button onClick={this.clickHandler}>
+	    					change 
+	    				</button>
+    				</div>
+    			)
+    		}
+    	});
+    	var config = {
+    		id: 'myId',
+    		title: "title"
+    	}
+    	ReactDOM.render(
+    		<MyComponent {...config} />,
+    		document.getElementById("content")
+    	);
+    	
+    </script>
+</body>
+</html>
