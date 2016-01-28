@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>React Tutorial</title>
+  
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script type="text/babel">
+    "use strict";
+    class Test extends React.Component {
+        render() {
+            console.log(this.props.name);
+            return (<button onClick={(this.handlerEvent).bind(this)} >click me</button>);
+        }
+        handlerEvent () {
+            console.log(this.props.name)
+        }
+    }
+    ReactDOM.render(
+        <Test name='niko' />,
+        document.getElementById("content")
+    )
+    </script>
+</body>
+
+</html>
